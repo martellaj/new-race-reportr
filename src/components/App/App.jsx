@@ -9,7 +9,7 @@ export default class App extends Component {
         super();
 
         this.state = {
-            sections: ['raceInfo', 'goals', 'pictures', 'splits', 'text'],
+            sections: ['raceInfo', 'goals', 'pictures', 'splits', 'finish', 'text'],
             raceInformation: {
                 name: {
                     value: 'Seattle Marathon',
@@ -64,6 +64,9 @@ export default class App extends Component {
                     '8:30'
                 ]
             },
+            finishInformation: {
+                finishTime: '1:30:00'
+            },
             textSections: ['Training', 'Pre-race', 'Race', 'Post-race']
         };
 
@@ -85,6 +88,8 @@ export default class App extends Component {
         this.addSplit = this.addSplit.bind(this);
         this.removeSplit = this.removeSplit.bind(this);
         this.editSplit = this.editSplit.bind(this);
+        this.addFinish = this.addFinish.bind(this);
+        this.editFinish = this.editFinish.bind(this);
         this.setDistanceType = this.setDistanceType.bind(this);
         this.addTextSection = this.addTextSection.bind(this);
         this.editTextSection = this.editTextSection.bind(this);
@@ -190,6 +195,18 @@ export default class App extends Component {
         this.setState({ splitInformation });
     }
 
+    addFinish() {
+        let finishInformation = this.state.finishInformation;
+        finishInformation.finishTime = '1:30:00';
+        this.setState({ finishInformation });
+    }
+
+    editFinish(index, finishTime) {
+        let finishInformation = this.state.finishInformation;
+        finishInformation.finishTime = finishTime;
+        this.setState({ finishInformation });
+    }
+
     addTextSection() {
         let textSections = this.state.textSections;
         textSections.push('Custom');
@@ -221,8 +238,8 @@ export default class App extends Component {
                 </div>
                 <div className="app">
                     <div className="app-container">
-                        <InputContainer sections={this.state.sections} moveSectionUp={this.moveSectionUp} moveSectionDown={this.moveSectionDown} raceInformation={this.state.raceInformation} setRaceInformationValue={this.setRaceInformationValue} setRaceInformationExclude={this.setRaceInformationExclude} goals={this.state.goals} addGoal={this.addGoal} editGoal={this.editGoal} removeGoal={this.removeGoal} pictures={this.state.pictures} addPicture={this.addPicture} editPicture={this.editPicture} removePicture={this.removePicture} splitInformation={this.state.splitInformation} addSplit={this.addSplit} editSplit={this.editSplit} removeSplit={this.removeSplit} setDistanceType={this.setDistanceType} textSections={this.state.textSections} addTextSection={this.addTextSection} editTextSection={this.editTextSection} removeTextSection={this.removeTextSection} />
-                        <OutputContainer sections={this.state.sections} raceInformation={this.state.raceInformation} goals={this.state.goals} pictures={this.state.pictures} splitInformation={this.state.splitInformation} textSections={this.state.textSections} />
+                        <InputContainer sections={this.state.sections} moveSectionUp={this.moveSectionUp} moveSectionDown={this.moveSectionDown} raceInformation={this.state.raceInformation} setRaceInformationValue={this.setRaceInformationValue} setRaceInformationExclude={this.setRaceInformationExclude} goals={this.state.goals} addGoal={this.addGoal} editGoal={this.editGoal} removeGoal={this.removeGoal} pictures={this.state.pictures} addPicture={this.addPicture} editPicture={this.editPicture} removePicture={this.removePicture} splitInformation={this.state.splitInformation} addSplit={this.addSplit} editSplit={this.editSplit} removeSplit={this.removeSplit} finishInformation={this.state.finishInformation} addFinish={this.addFinish} editFinish={this.editFinish} setDistanceType={this.setDistanceType} textSections={this.state.textSections} addTextSection={this.addTextSection} editTextSection={this.editTextSection} removeTextSection={this.removeTextSection} />
+                        <OutputContainer sections={this.state.sections} raceInformation={this.state.raceInformation} goals={this.state.goals} pictures={this.state.pictures} splitInformation={this.state.splitInformation} finishInformation={this.state.finishInformation} textSections={this.state.textSections} />
                     </div>
                 </div>
             </div>

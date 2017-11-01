@@ -4,6 +4,7 @@ import PicturesSection from '../PicturesSection/PicturesSection';
 import RaceInformationSection from '../RaceInformationSection/RaceInformationSection';
 import React, { Component } from 'react';
 import SplitInformationSection from '../SplitInformationSection/SplitInformationSection';
+import FinishInformationSection from '../FinishInformationSection/FinishInformationSection';
 import TextSection from '../TextSection/TextSection'
 
 export default class InputContainer extends Component {
@@ -37,6 +38,11 @@ export default class InputContainer extends Component {
                 case 'splits':
                     sections.push(
                         <SplitInformationSection key={sections.length} sectionClass="section" moveSectionUp={this.props.moveSectionUp} moveSectionDown={this.props.moveSectionDown} splitInformation={this.props.splitInformation} addSplit={this.props.addSplit} editSplit={this.props.editSplit} removeSplit={this.props.removeSplit} setDistanceType={this.props.setDistanceType} />
+                    );
+                    break;
+                case 'finish':
+                    sections.push(
+                        <FinishInformationSection key={sections.length} sectionClass="section" moveSectionUp={this.props.moveSectionUp} moveSectionDown={this.props.moveSectionDown} finishInformation={this.props.finishInformation} addFinish={this.props.addFinish} editFinish={this.props.editFinish} />
                     );
                     break;
                 case 'text':

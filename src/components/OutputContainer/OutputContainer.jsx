@@ -21,6 +21,7 @@ export default class OutputContainer extends Component {
         this.convertGoalsToMarkdown = this.convertGoalsToMarkdown.bind(this);
         this.convertPicturesToMarkdown = this.convertPicturesToMarkdown.bind(this);
         this.convertSplitsToMarkdown = this.convertSplitsToMarkdown.bind(this);
+        this.convertFinishToMarkdown = this.convertFinishToMarkdown.bind(this);
         this.convertTextSectionsToMarkdown = this.convertTextSectionsToMarkdown.bind(this);
         this.renderMarkdown = this.renderMarkdown.bind(this);
         this.onTabSelect = this.onTabSelect.bind(this);
@@ -132,6 +133,18 @@ export default class OutputContainer extends Component {
         for (let split of this.props.splitInformation.splits) {
             markdown += `| ${index++} | ${split} |\n`;
         }
+
+        markdown = this.convertFinishToMarkdown(markdown);
+
+        return markdown;
+    }
+
+    convertFinishToMarkdown(markdown) {
+        if (this.props.finishInformation.finishTime === '') {
+            return '';
+        }
+
+        markdown += `| Finish | ${this.props.finishInformation.finishTime} |\n`;
 
         return markdown;
     }
